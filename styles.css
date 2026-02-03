@@ -553,18 +553,33 @@ h2 {
 
 .interest-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 18px;
+  grid-template-columns: 1fr;
+  gap: 16px;
 }
 
 .interest-card {
-  padding: 20px;
-  /* Reduced from 24px */
+  padding: 24px;
   border: 1px solid var(--border-color);
-  border-radius: 24px;
+  border-radius: 20px;
   background: var(--card-bg);
   box-shadow: var(--card-shadow);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: grid;
+  grid-template-columns: 180px 1fr 220px;
+  gap: 32px;
+  align-items: center;
+}
+
+@media (max-width: 800px) {
+  .interest-card {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    align-items: start;
+  }
+
+  .interest-card .tags {
+    justify-content: flex-start;
+  }
 }
 
 [data-theme="dark"] .interest-card {
@@ -579,14 +594,59 @@ h2 {
   /* Maintain border */
 }
 
+.interest-card.special-card {
+  border: 1px solid transparent;
+  background: linear-gradient(var(--card-bg), var(--card-bg)) padding-box,
+    var(--accent-gradient) border-box;
+  box-shadow: 0 4px 12px rgba(26, 115, 232, 0.15);
+  position: relative;
+  overflow: hidden;
+}
+
+[data-theme="dark"] .interest-card.special-card {
+  box-shadow: 0 4px 12px rgba(138, 180, 248, 0.1);
+}
+
+.interest-card.special-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  /* Changed from 100% width to height side bar? No, keep it top but maybe left vertical bar looks better for horizontal card? Let's keep top for now but maybe make it left since it is horizontal. Let's try left bar. */
+  height: 100%;
+  width: 4px;
+  background: var(--accent-gradient);
+  opacity: 0.6;
+}
+
+.recent-title {
+  font-family: "Lora", serif;
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0;
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: inline-block;
+}
+
+.recent-desc {
+  margin: 0;
+  color: var(--text-color);
+  line-height: 1.6;
+  font-size: 15px;
+}
+
 .interest-card h3,
 .interest-card h4 {
-  margin: 0 0 8px;
+  margin: 0;
   font-size: 16px;
 }
 
 .interest-card p {
-  margin: 0 0 10px;
+  margin: 0;
   color: var(--text-secondary);
   line-height: 1.6;
 }
@@ -596,6 +656,7 @@ h2 {
   gap: 8px;
   flex-wrap: wrap;
   font-size: 12px;
+  justify-content: flex-end;
 }
 
 .tags span {
