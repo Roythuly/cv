@@ -108,6 +108,8 @@
 
 html {
   scroll-behavior: smooth;
+  max-width: 100%;
+  overflow-x: clip;
 }
 
 body {
@@ -119,6 +121,8 @@ body {
   min-height: 100vh;
   transition: background 0.3s ease, color 0.3s ease;
   line-height: 1.6;
+  max-width: 100%;
+  overflow-x: clip;
 }
 
 h1,
@@ -234,6 +238,7 @@ h2 {
   height: 100%;
   border-radius: 50%;
   object-fit: cover;
+  object-position: 50% 30%;
   border: 3px solid rgba(255, 255, 255, 0.8);
 }
 
@@ -783,6 +788,44 @@ h2 {
   transform: scale(1.02);
 }
 
+.pub-cover {
+  width: 100%;
+  min-height: 140px;
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  color: #ffffff;
+  font-family: "Lora", "Times New Roman", serif;
+  transition: transform 0.25s ease;
+}
+
+.pub-cover span {
+  font-size: 34px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+}
+
+.pub-cover small {
+  font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+}
+
+.pub-cover-nsr {
+  background:
+    radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.24), transparent 42%),
+    linear-gradient(145deg, #163f67, #2f78a6);
+}
+
+.pub-item:hover .pub-cover {
+  transform: scale(1.02);
+}
+
 .pub-title {
   font-weight: 600;
   margin-bottom: 6px;
@@ -972,11 +1015,35 @@ h2 {
   stroke-linejoin: round;
 }
 
-@media (max-width: 720px) {
+@media (max-width: 900px) {
   .site-top {
     flex-direction: column;
     align-items: flex-start;
-    gap: 16px;
+    gap: 12px;
+  }
+
+  .site-nav {
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 720px) {
+  .site-header {
+    position: static;
+    padding-top: 8px;
+    padding-bottom: 12px;
+    gap: 12px;
+  }
+
+  .site-top {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .subtitle {
+    font-size: 13px;
+    line-height: 1.4;
   }
 
   .site-nav {
@@ -1030,6 +1097,10 @@ h2 {
   .pub-item img {
     max-height: 180px;
     width: 100%;
+  }
+
+  .pub-cover {
+    min-height: 180px;
   }
 
   .section {
