@@ -788,42 +788,28 @@ h2 {
   transform: scale(1.02);
 }
 
-.pub-cover {
+.pub-figure {
+  margin: 0;
+  align-self: center;
+  min-width: 0;
+}
+
+.pub-figure > a {
+  display: block;
+}
+
+.pub-item .pub-figure img {
+  display: block;
   width: 100%;
-  min-height: 140px;
-  border-radius: 12px;
-  border: 1px solid var(--border-color);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 4px;
-  color: #ffffff;
-  font-family: "Lora", "Times New Roman", serif;
-  transition: transform 0.25s ease;
+  height: auto;
+  object-fit: contain;
+  background: #ffffff;
 }
 
-.pub-cover span {
-  font-size: 34px;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-}
-
-.pub-cover small {
-  font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-}
-
-.pub-cover-nsr {
-  background:
-    radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.24), transparent 42%),
-    linear-gradient(145deg, #163f67, #2f78a6);
-}
-
-.pub-item:hover .pub-cover {
-  transform: scale(1.02);
+.pub-figure figcaption {
+  margin-top: 6px;
+  font-size: 0.75rem;
+  text-align: center;
 }
 
 .pub-title {
@@ -1099,8 +1085,9 @@ h2 {
     width: 100%;
   }
 
-  .pub-cover {
-    min-height: 180px;
+  .pub-figure {
+    width: min(100%, 240px);
+    justify-self: center;
   }
 
   .section {
